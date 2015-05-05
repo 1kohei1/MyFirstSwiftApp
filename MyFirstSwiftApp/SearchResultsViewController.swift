@@ -30,7 +30,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+        let kCellIdentifier: String = "Cell"
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
         
         if var  rowData:NSDictionary = self.tableData[indexPath.row] as? NSDictionary,
                 urlString = rowData["artworkUrl60"] as? String,
@@ -45,6 +46,25 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if var  rowData = self.tableData[indexPath.row] as? NSDictionary,
+                name = rowData["trackName"] as? String,
+                formattedPrice = rowData["formattedPrice"] as? String
+        {
+                var alert = UIAlertController(
+                    title: name,
+                    message: formattedPrice,
+                    preferredStyle: .Alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: "Ok",
+                    style: .Default,
+                    handler: nil)
+                )
+                self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func didReceiveAPIResults(results: NSArray) {
