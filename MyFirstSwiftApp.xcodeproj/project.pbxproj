@@ -14,6 +14,7 @@
 		1946E61C1AF92B05002C6DF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1946E61A1AF92B05002C6DF5 /* LaunchScreen.xib */; };
 		1946E6281AF92B05002C6DF5 /* MyFirstSwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946E6271AF92B05002C6DF5 /* MyFirstSwiftAppTests.swift */; };
 		1946E6321AF94750002C6DF5 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946E6311AF94750002C6DF5 /* APIController.swift */; };
+		1946E6341AF95D6B002C6DF5 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 1946E6331AF95D6B002C6DF5 /* Blank52.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		1946E6261AF92B05002C6DF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1946E6271AF92B05002C6DF5 /* MyFirstSwiftAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstSwiftAppTests.swift; sourceTree = "<group>"; };
 		1946E6311AF94750002C6DF5 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		1946E6331AF95D6B002C6DF5 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				1946E6111AF92B05002C6DF5 /* AppDelegate.swift */,
 				1946E6131AF92B05002C6DF5 /* SearchResultsViewController.swift */,
+				1946E6331AF95D6B002C6DF5 /* Blank52.png */,
 				1946E6311AF94750002C6DF5 /* APIController.swift */,
 				1946E6151AF92B05002C6DF5 /* Main.storyboard */,
 				1946E6181AF92B05002C6DF5 /* Images.xcassets */,
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1946E6171AF92B05002C6DF5 /* Main.storyboard in Resources */,
+				1946E6341AF95D6B002C6DF5 /* Blank52.png in Resources */,
 				1946E61C1AF92B05002C6DF5 /* LaunchScreen.xib in Resources */,
 				1946E6191AF92B05002C6DF5 /* Images.xcassets in Resources */,
 			);

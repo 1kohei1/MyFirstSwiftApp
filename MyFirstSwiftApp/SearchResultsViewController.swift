@@ -13,6 +13,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var appsTableView: UITableView!
     var tableData = []
     var api = APIController()
+    var imageCashe = [String : UIImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,34 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 urlString = rowData["artworkUrl60"] as? String,
                 imgURL = NSURL(string: urlString),
                 formattedPrice = rowData["formattedPrice"] as? String,
-                imgData = NSData(contentsOfURL: imgURL),
                 trackName = rowData["trackName"] as? String
         {
             cell.detailTextLabel?.text = formattedPrice
-            cell.imageView?.image = UIImage(data: imgData)
             cell.textLabel?.text = trackName
+            
+            cell.imageView?.image = UIImage(named: "Blank52.png")
+            // If this image is already cached, don't re-download
+            if var img = imageCashe[urlString] {
+                cell.imageView?.image = img;
+            } else {
+                // The image isn't cached, download the img data
+                // We should perform this in a background thread
+                var request:NSURLRequest = NSURLRequest(URL: imgURL)
+                var mainQueue = NSOperationQueue.mainQueue()
+                NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: {(response, data, error) -> Void in
+                    if error == nil {
+                        var image = UIImage(data: data)
+                        self.imageCashe[urlString] = image
+                        dispatch_async(dispatch_get_main_queue(), {
+                            if var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                                cellToUpdate.imageView?.image = image
+                            }
+                        })
+                    } else {
+                        println("Error: \(error.localizedDescription)")
+                    }
+                })
+            }
         }
         
         return cell
